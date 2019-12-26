@@ -25,7 +25,7 @@ server {
     ssl on;
     ssl_certificate       /etc/v2ray/v2ray.crt;
     ssl_certificate_key   /etc/v2ray/v2ray.key;
-    ssl_protocols         TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    ssl_protocols         TLSv1.3;
     ssl_ciphers           HIGH:!aNULL:!MD5;
     server_name           $do_name;
 
@@ -47,8 +47,7 @@ cat <<EOF >>/etc/v2ray/config.json
 {
   "log": {
     "access": "/var/log/v2ray/access.log",
-    "error": "/var/log/v2ray/error.log",
-    "loglevel": "info"
+    "loglevel": "warning"
   },
   "inbounds": [
     {
