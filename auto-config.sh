@@ -2,8 +2,8 @@
 set -e
 
 if [ $# -ne 1 ]; then
-	echo "Usage: $0 domain_name" >&2
-	exit 1
+        echo "Usage: $0 domain_name" >&2
+        exit 1
 fi
 
 do_name=$1
@@ -47,6 +47,7 @@ cat <<EOF >>/etc/v2ray/config.json
 {
   "log": {
     "access": "/var/log/v2ray/access.log",
+    "error": "/var/log/v2ray/error.log",
     "loglevel": "warning"
   },
   "inbounds": [
@@ -58,6 +59,18 @@ cat <<EOF >>/etc/v2ray/config.json
         "clients": [
           {
             "id": "a10a835a-d561-42c1-a80e-4903c31c07b3",
+            "alterId": 64,
+            "security": "auto",
+            "level": 0
+          },
+	 {
+            "id": "d51565ad-34bc-41e7-9700-c69498e04f86",
+            "alterId": 64,
+            "security": "auto",
+            "level": 0
+          },
+	 {
+            "id": "a5be326e-2d27-42e3-b726-0e429138d7a2",
             "alterId": 64,
             "security": "auto",
             "level": 0
@@ -88,5 +101,3 @@ systemctl enable v2ray
 
 netstat -lntp
 echo "done, enjoy!"
-
-
