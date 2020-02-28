@@ -14,7 +14,7 @@ hostnamectl set-hostname $do_name
 bash <(curl -L -s https://install.direct/go.sh)
 curl https://get.acme.sh | sh
 systemctl stop nginx
-~/.acme.sh/acme.sh --issue -w -d $do_name --standalone -k ec-256 --log
+~/.acme.sh/acme.sh --issue -d $do_name --standalone -k ec-256 --log
 ~/.acme.sh/acme.sh --installcert -d $do_name --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
 cat <<EOF >>/etc/nginx/sites-available/ssl
 server {
